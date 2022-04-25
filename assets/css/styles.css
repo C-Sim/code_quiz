@@ -23,21 +23,24 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: var(--deep-space-sparkle);
+  text-align: center;
 }
 
 #title {
   color: var(--cadet-blue);
-  font-size: 48px;
+  font-size: 3rem;
   position: relative;
-  margin: 8px 88px;
+  margin: 0.5rem 0.5rem 0.5rem 3rem;
+  animation: shakeX;
+  animation-duration: 2s;
 }
 
 .nav-link {
   text-decoration: none;
   color: var(--beige);
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 400;
 }
 
@@ -52,5 +55,19 @@ body {
   background-color: var(--deep-space-sparkle);
   color: var(--cadet-blue);
   text-align: center;
-  padding: 8px;
+  padding: 8px 0px;
+  font-size: 1rem;
+}
+
+/* mobile viewport styles */
+/* navbar */
+@media screen and (max-width: 576px) {
+  .navbar-container,
+  .nav-link-container {
+    flex-direction: column;
+  }
+
+  #title {
+    margin: 0.5rem;
+  }
 }

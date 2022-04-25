@@ -8,13 +8,12 @@ Quiz built using JavaScript, Web APIs....
 
 - HTML
 - CSS
+  - Animation
   - Media queries
   - Flexbox
   - Variables
-- JavaScript
-  -
-- Web APIs
-  -
+- ## JavaScript
+- ## Web APIs
 - GitHub Pages
 
 ## Screenshots
