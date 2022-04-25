@@ -15,7 +15,6 @@
 body {
   margin: 0px;
   background-color: var(--cadet-blue);
-  height: 100%;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -39,7 +38,7 @@ body {
   position: relative;
   margin: 0.5rem 0.5rem 0.5rem 3rem;
   animation: shakeX;
-  animation-duration: 2s;
+  animation-duration: 3s;
 }
 
 .nav-link {
@@ -50,8 +49,7 @@ body {
   margin: 1rem 0rem;
 }
 
-.nav-link:hover,
-#cv:hover {
+.nav-link:hover {
   color: var(--orange-red-crayola);
   cursor: pointer;
 }
@@ -61,21 +59,30 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   margin: 0;
 }
 
-.start-content {
-  text-align: center;
+.timer-section {
+  color: var(--orange-red-crayola);
+  font-size: 32px;
+  border: solid 8px var(--deep-space-sparkle);
+  padding: 8px;
+  margin: 1rem 8rem;
+}
+
+.timer-span {
+  font-weight: 800;
+}
+
+.start-content,
+.question-section {
   color: var(--deep-space-sparkle);
   padding: 0 1rem;
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0;
 }
 
-.start-content h2 {
+.start-content h2,
+.question-section h2 {
   color: var(--beige);
 }
 
@@ -87,6 +94,17 @@ body {
   padding: 8px 18px;
   margin: 18px;
   font-weight: bolder;
+  font-size: 18px;
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+  line-height: 2.5rem;
+}
+
+.options li:hover {
+  background-color: var(--orange-red-crayola);
 }
 
 /* footer */

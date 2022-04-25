@@ -19,23 +19,24 @@
     <title>...Quiz</title>
   </head>
   <body>
-    <main class="main-content">
-      <!-- nav containing title and 2 links -->
-      <header class="header">
-        <nav class="navbar-container">
-          <div class="nav-links">
-            <a class="nav-link" href="./index.html">Home</a>
-          </div>
-          <div>
-            <h1 id="title">Code Quiz</h1>
-          </div>
-          <div class="nav-links">
-            <a class="nav-link" href="./highscores.html">High Scores</a>
-          </div>
-        </nav>
-      </header>
+    <!-- nav containing title and 2 links -->
+    <header class="header">
+      <nav class="navbar-container">
+        <div class="nav-links">
+          <a class="nav-link" href="./index.html">Home</a>
+        </div>
+        <div>
+          <h1 id="title">Code Quiz</h1>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link" href="./highscores.html">High Scores</a>
+        </div>
+      </nav>
+    </header>
 
-      <section class="start-content">
+    <main class="main-content">
+      <!-- Homepage -->
+      <!-- <section class="start-content">
         <h2>Welcome to the quiz...</h2>
         <p class="intro">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur
@@ -46,13 +47,31 @@
         <div>
           <button id="start-button" type="submit">Start Quiz</button>
         </div>
-      </section>
+      </section> -->
 
-      <!-- footer -->
-      <footer class="footer">
-        <i class="fa-solid fa-crown"></i> Created by Cherelle Simpson &copy 2022
-      </footer>
+      <!-- Question page -->
+      <section class="timer-section">
+        <div>Time Remaining: <span class="timer-span">60</span></div>
+      </section>
+      <section class="question-section">
+        <h2>
+          Question question question question question question question
+          question?
+        </h2>
+        <ul class="options">
+          <li>Answer 1</li>
+          <li>Answer 2</li>
+          <li>Answer 3</li>
+          <li>Answer 4</li>
+        </ul>
+        <div class="confirm-result">Alert if correct/incorrect</div>
+      </section>
     </main>
+    <!-- footer -->
+    <footer class="footer">
+      <i class="fa-solid fa-crown"></i> Created by Cherelle Simpson &copy 2022
+    </footer>
+
     <script src="./assets/js/index.js"></script>
   </body>
 </html>
