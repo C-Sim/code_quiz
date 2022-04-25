@@ -19,27 +19,61 @@
     <title>Quiz High Scores</title>
   </head>
   <body>
-    <main>
-      <!-- nav containing title and 2 links -->
-      <header class="header">
-        <nav class="navbar-container">
-          <div class="nav-links">
-            <a class="nav-link" href="./index.html">Home</a>
-          </div>
-          <div>
-            <h1 id="title">Code Quiz</h1>
-          </div>
-          <div class="nav-links">
-            <a class="nav-link" href="./highscores.html">High Scores</a>
-          </div>
-        </nav>
-      </header>
+    <!-- nav containing title and 2 links -->
+    <header class="header">
+      <nav class="navbar-container">
+        <div class="nav-links">
+          <a class="nav-link" href="./index.html">Home</a>
+        </div>
+        <div>
+          <h1 id="title">Code Quiz</h1>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link" href="./highscores.html">High Scores</a>
+        </div>
+      </nav>
+    </header>
 
-      <!-- footer -->
-      <footer class="footer">
-        <i class="fa-solid fa-crown"></i> Created by Cherelle Simpson &copy 2022
-      </footer>
+    <main class="main-content">
+      <!-- High score page -->
+      <section class="high-scores-section">
+        <h2>High Scores</h2>
+        <table class="all-scores">
+          <tr>
+            <th>Name</th>
+            <th>Score</th>
+          </tr>
+          <tr>
+            <td>a</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>b</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>c</td>
+            <td>3</td>
+          </tr>
+        </table>
+        <div>
+          <a href="./index.html">
+            <button id="try-again-button" type="submit">Try Again</button>
+          </a>
+        </div>
+        <div>
+          <button id="clear-scores-button" type="submit">
+            Clear All Scores
+          </button>
+        </div>
+      </section>
     </main>
+
+    <!-- footer -->
+    <footer class="footer">
+      <i class="fa-solid fa-crown"></i> Created by Cherelle Simpson &copy 2022
+    </footer>
+
     <script src="./assets/js/index.js"></script>
   </body>
 </html>
