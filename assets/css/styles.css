@@ -54,7 +54,7 @@ body {
   cursor: pointer;
 }
 
-.main-content {
+#main-content {
   flex: 2;
   display: flex;
   flex-direction: column;
@@ -64,8 +64,8 @@ body {
   margin: 0;
 }
 
-.timer-section,
-.score {
+#timer-section,
+#score {
   color: var(--beige);
   font-size: 2rem;
   background-color: var(--deep-space-sparkle);
@@ -73,34 +73,25 @@ body {
   margin: 0rem 4rem;
 }
 
-.timer-span,
-.score-span {
+.span {
   font-weight: 800;
   color: var(--orange-red-crayola);
 }
 
-.start-content,
-.question-section,
-.record-score-section,
-.high-scores-section {
+.content {
   color: var(--deep-space-sparkle);
   padding: 0 1rem;
 }
 
-.start-content h2,
-.high-scores-section h2 {
+.content h2 {
   color: var(--beige);
 }
 
-.question-section h2 {
-  color: var(--beige);
+#question-section h2 {
   font-size: 1.2rem;
 }
 
-#start-button,
-#score-button,
-#try-again-button,
-#clear-scores-button {
+.button {
   background-color: var(--orange-red-crayola);
   color: var(--cadet-blue);
   border: none;
@@ -111,21 +102,26 @@ body {
   font-size: 18px;
 }
 
+.button:hover {
+  color: var(--beige);
+  cursor: pointer;
+}
+
 #clear-scores-button {
   background-color: var(--deep-space-sparkle);
 }
 
-.options {
+#options {
   list-style: none;
   padding: 0;
   line-height: 2.5rem;
 }
 
-.options li:hover {
+#options li:hover {
   background-color: var(--orange-red-crayola);
 }
 
-.name-input {
+#name-input {
   margin: 2rem 0 0 0;
   height: 2rem;
   width: 24rem;
@@ -133,27 +129,26 @@ body {
   color: var(--cadet-blue);
 }
 
-.confirm-result,
-.confirm-valid {
+.confirm-result {
   margin: 0.5rem;
 }
 
-.all-scores {
+#all-scores {
   width: 24rem;
   font-size: 1rem;
   margin: 2rem;
 }
 
-.all-scores th {
+#all-scores th {
   color: var(--orange-red-crayola);
   font-size: 1.2rem;
 }
 
-.all-scores tr:nth-child(odd) td {
+#all-scores tr:nth-child(odd) td {
   background-color: var(--beige);
 }
 
-.all-scores tr:nth-child(even) td {
+#all-scores tr:nth-child(even) td {
   background-color: var(--deep-space-sparkle);
   color: var(--beige);
 }
