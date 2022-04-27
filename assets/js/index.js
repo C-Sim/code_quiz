@@ -44,6 +44,8 @@ let quizComplete = false;
 
 const startBtn = document.getElementById("start-button");
 
+const timer = document.getElementById("timer-span");
+
 const readFromLocalStorage = (key, defaultValue) => {
   // get from LS by key
   const dataLS = localStorage.getItem(key);
@@ -71,14 +73,19 @@ const removeStartSection = () => {};
 
 const startTimer = () => {
   // declare function to execute every 1 sec
+
   const countdown = () => {
     // decrement timer value
+    timerValue -= 1;
+    timer.textContent = timerValue;
     // if quizComplete is true then stop timer
     // check if timer reaches 0
     // if true render game over
   };
 
   // setInterval of 1000ms (1s)
+  setInterval(countdown, 1000);
+  return;
 };
 
 const validateAnswer = () => {
@@ -138,9 +145,12 @@ const renderQuizCompleteSection = () => {
 };
 
 const startQuiz = () => {
-  console.log("start");
   // remove start section
+  const removeStart = document.getElementById("start-content");
+
+  removeStart.remove();
   // start timer
+  startTimer();
   // render timer section
   // render question section
 };
