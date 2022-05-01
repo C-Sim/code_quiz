@@ -104,21 +104,32 @@ const validateAnswer = (event) => {
 
   // compare the 2 answers
   if (answerSelected === correctAnswer) {
+    //   if correct set status as so
     answerStatus = "Correct";
-    // const message = `${status}...well done!`;
   } else {
+    //   if incorrect set status as so
     answerStatus = "Incorrect";
-    // const message = `${status}...more studying to do!`;
+    // TODO if incorrect subtract 5 seconds from timerValue
+    timerValue -= 5000;
   }
 
   renderAlert(answerStatus);
 
-  // if incorrect subtract 5 seconds from timerValue
-  // if incorrect render error alert with message and status
-  // if correct render success alert with message and status
   // set timeout for 500ms and then go to next question
-  // if question is last question set quizComplete to true and then render form
-  // if question is not last question then increment question index and render next question
+  setTimeout(() => {
+    document.getElementById("question-section").remove();
+
+    if (questionIndex < questions.length - 1) {
+      // if question is not last question then increment question index and render next question
+      questionIndex += 1;
+      console.log(questionIndex);
+      renderQuestionSection();
+    } else {
+      // if question is last question set quizComplete to true and then render form
+      quizComplete = true;
+      console.log(quizComplete);
+    }
+  }, 1000);
 };
 
 const handleFormSubmit = (event) => {
@@ -203,9 +214,11 @@ const renderAlert = (answerStatus) => {
   const confirmResult = document.createElement("div");
   confirmResult.setAttribute("class", "confirm-result");
   if (answerStatus == "Correct") {
+    // if correct render success alert with message and status
     confirmResult.setAttribute("id", "correct");
     confirmResult.textContent = `${answerStatus}...well done!`;
   } else {
+    // if incorrect render error alert with message and status
     confirmResult.setAttribute("id", "incorrect");
     confirmResult.textContent = `${answerStatus}...more studying to do!`;
   }
