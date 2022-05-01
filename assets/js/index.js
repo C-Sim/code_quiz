@@ -35,6 +35,7 @@ const questions = [
 
 let questionIndex = 0;
 let timerValue = 12 * questions.length;
+let answerStatus = "not selected";
 let quizComplete = false;
 
 const startBtn = document.getElementById("start-button");
@@ -86,10 +87,32 @@ const startTimer = () => {
   //   return;
 };
 
-const validateAnswer = () => {
+const validateAnswer = (event) => {
+  event.stopPropagation();
+  console.log("clicked");
   // get answer clicked from user
+  const target = event.target;
+  console.log(target);
+  const answerSelected = target.getAttribute("data-option");
+  console.log(answerSelected);
+
   // get the correct answer for question
+  const currentTarget = event.currentTarget;
+  console.log(currentTarget);
+  const correctAnswer = currentTarget.getAttribute("data-answer");
+  console.log(correctAnswer);
+
   // compare the 2 answers
+  if (answerSelected === correctAnswer) {
+    answerStatus = "Correct";
+    // const message = `${status}...well done!`;
+  } else {
+    answerStatus = "Incorrect";
+    // const message = `${status}...more studying to do!`;
+  }
+
+  renderAlert(answerStatus);
+
   // if incorrect subtract 5 seconds from timerValue
   // if incorrect render error alert with message and status
   // if correct render success alert with message and status
@@ -139,6 +162,11 @@ const renderQuestionSection = () => {
   const questionSection = document.createElement("section");
   questionSection.setAttribute("class", "content");
   questionSection.setAttribute("id", "question-section");
+  questionSection.setAttribute(
+    "data-answer",
+    questions[questionIndex].correctAnswer
+  );
+  console.log(questionSection);
 
   const questionContent = document.createElement("h2");
 
@@ -149,7 +177,9 @@ const renderQuestionSection = () => {
 
   for (let i = 0; i < questions[questionIndex].answers.length; i += 1) {
     const answer = document.createElement("li");
+    answer.setAttribute("data-option", questions[questionIndex].answers[i]);
     answer.textContent = questions[questionIndex].answers[i];
+    console.log(answer);
 
     options.appendChild(answer);
   }
@@ -158,7 +188,9 @@ const renderQuestionSection = () => {
 
   // append section to main
   mainContent.append(questionSection);
+
   // add click event listener on #question-section
+  questionSection.addEventListener("click", validateAnswer);
 };
 
 const renderGameOver = () => {
@@ -166,19 +198,19 @@ const renderGameOver = () => {
   // append section to main
 };
 
-const renderAlert = (message, status) => {
+const renderAlert = (answerStatus) => {
   // use DOM tree as guide to build in JS
   const confirmResult = document.createElement("div");
   confirmResult.setAttribute("class", "confirm-result");
-  if ((validateAnswer = "correct")) {
+  if (answerStatus == "Correct") {
     confirmResult.setAttribute("id", "correct");
-    confirmResult.textContent = "Correct...well done!";
+    confirmResult.textContent = `${answerStatus}...well done!`;
   } else {
     confirmResult.setAttribute("id", "incorrect");
-    confirmResult.textContent = "Incorrect...more study needed.";
+    confirmResult.textContent = `${answerStatus}...more studying to do!`;
   }
   // append div to #question-section
-  questionSection.append(confirmResult);
+  document.getElementById("question-section").append(confirmResult);
 };
 
 const renderForm = () => {
