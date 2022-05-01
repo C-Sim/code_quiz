@@ -36,7 +36,7 @@ const questions = [
 let questionIndex = 0;
 let timerValue = 12 * questions.length;
 let answerStatus = "not selected";
-let quizComplete = false;
+// let quizComplete = false;
 
 const startBtn = document.getElementById("start-button");
 
@@ -110,7 +110,7 @@ const validateAnswer = (event) => {
     //   if incorrect set status as so
     answerStatus = "Incorrect";
     // TODO if incorrect subtract 5 seconds from timerValue
-    timerValue -= 5000;
+    timerValue -= 5;
   }
 
   renderAlert(answerStatus);
@@ -126,8 +126,7 @@ const validateAnswer = (event) => {
       renderQuestionSection();
     } else {
       // if question is last question set quizComplete to true and then render form
-      quizComplete = true;
-      console.log(quizComplete);
+      renderRecordScoreSection();
     }
   }, 1000);
 };
@@ -179,12 +178,17 @@ const renderQuestionSection = () => {
   );
   console.log(questionSection);
 
+  // append section to main
+  mainContent.append(questionSection);
+
   const questionContent = document.createElement("h2");
 
   questionContent.textContent = questions[questionIndex].question;
 
   const options = document.createElement("ul");
   options.setAttribute("id", "options");
+
+  questionSection.append(questionContent, options);
 
   for (let i = 0; i < questions[questionIndex].answers.length; i += 1) {
     const answer = document.createElement("li");
@@ -195,19 +199,14 @@ const renderQuestionSection = () => {
     options.appendChild(answer);
   }
 
-  questionSection.append(questionContent, options);
-
-  // append section to main
-  mainContent.append(questionSection);
-
   // add click event listener on #question-section
   questionSection.addEventListener("click", validateAnswer);
 };
 
-const renderGameOver = () => {
-  // use DOM tree as guide to build in JS
-  // append section to main
-};
+// const renderGameOver = () => {
+//   // use DOM tree as guide to build in JS
+//   // append section to main
+// };
 
 const renderAlert = (answerStatus) => {
   // use DOM tree as guide to build in JS
@@ -226,13 +225,61 @@ const renderAlert = (answerStatus) => {
   document.getElementById("question-section").append(confirmResult);
 };
 
-const renderForm = () => {
+const renderRecordScoreSection = () => {
   // use DOM tree as guide to build in JS
+
+  document.getElementById("timer-section").remove();
+
+  const recordScoreSection = document.createElement("section");
+  recordScoreSection.setAttribute("class", "content");
+  recordScoreSection.setAttribute("id", "record-score-section");
+
   // append section to main
+  mainContent.append(recordScoreSection);
+
+  const form = document.createElement("form");
+  form.setAttribute("id", "submit-score");
+
+  recordScoreSection.append(form);
+
+  const score = document.createElement("div");
+  score.setAttribute("id", "score");
+  score.textContent = "Game Over! Your score is: ";
+
+  const scoreSpan = document.createElement("span");
+  scoreSpan.setAttribute("class", "span");
+  scoreSpan.setAttribute("id", "score-span");
+  scoreSpan.textContent = timerValue;
+
+  score.append(scoreSpan);
+
+  const inputContainer = document.createElement("div");
+
+  const input = document.createElement("input");
+  input.setAttribute("id", "name-input");
+  input.setAttribute("placeholder", "Enter you name here");
+
+  inputContainer.appendChild(input);
+
+  const buttonContainer = document.createElement("div");
+
+  const scoreButton = document.createElement("button");
+  scoreButton.setAttribute("class", "button");
+  scoreButton.setAttribute("id", "score-button");
+  scoreButton.setAttribute("type", "submit");
+  scoreButton.textContent = "Submit Score";
+
+  buttonContainer.appendChild(scoreButton);
+
+  const confirmInput = document.createElement("div");
+  confirmInput.setAttribute("class", "confirm-result");
+
+  form.append(score, inputContainer, buttonContainer, confirmInput);
+
   // add submit event handler to form
 };
 
-const renderQuizCompleteSection = () => {
+const renderHighScores = () => {
   // use DOM tree as guide to build in JS
   // append section to main
 };
