@@ -44,6 +44,8 @@ let quizComplete = false;
 
 const startBtn = document.getElementById("start-button");
 
+const mainContent = document.getElementById("main-content");
+
 const timer = document.getElementById("timer-span");
 
 const readFromLocalStorage = (key, defaultValue) => {
@@ -69,7 +71,8 @@ const onLoad = () => {
   console.log(highScores);
 };
 
-const removeStartSection = () => {};
+// const removeStartSection = () => {};
+// Set in startQuiz function...
 
 const startTimer = () => {
   // declare function to execute every 1 sec
@@ -77,7 +80,7 @@ const startTimer = () => {
   const countdown = () => {
     // decrement timer value
     timerValue -= 1;
-    timer.textContent = timerValue;
+    // timer.textContent = timerValue;
     // if quizComplete is true then stop timer
     // check if timer reaches 0
     // if true render game over
@@ -113,34 +116,51 @@ const handleFormSubmit = () => {
 };
 
 const renderTimerSection = () => {
-  // use HTML as guide and build in JS
+  // use DOM tree as guide to build in JS
+  const timerSection = document.createElement("section");
+  timerSection.setAttribute("id", "timer-section");
+
+  const timeRemaining = document.createElement("div");
+  timeRemaining.textContent = "Time Remaining: ";
+
+  const timerSpan = document.createElement("span");
+  //   TODO - check if better way to set multiple attributes
+  timerSpan.setAttribute("id", "timer-span");
+  timerSpan.setAttribute("class", "span");
+  timerSpan.textContent = timerValue;
+
+  timeRemaining.appendChild(timerSpan);
+
+  timerSection.append(timeRemaining);
+
   // append section to main
+  mainContent.append(timerSection);
 };
 
 const renderQuestionSection = () => {
-  // use HTML as guide and build in JS
+  // use DOM tree as guide to build in JS
   // append section to main
   // add click event listener on #question-section
 };
 
 const renderGameOver = () => {
-  // use HTML as guide and build in JS
+  // use DOM tree as guide to build in JS
   // append section to main
 };
 
 const renderAlert = (message, status) => {
-  // use HTML as guide and build in JS
+  // use DOM tree as guide to build in JS
   // append div to #question-section
 };
 
 const renderForm = () => {
-  // use HTML as guide and build in JS
+  // use DOM tree as guide to build in JS
   // append section to main
   // add submit event handler to form
 };
 
 const renderQuizCompleteSection = () => {
-  // use HTML as guide and build in JS
+  // use DOM tree as guide to build in JS
   // append section to main
 };
 
@@ -152,6 +172,7 @@ const startQuiz = () => {
   // start timer
   startTimer();
   // render timer section
+  renderTimerSection();
   // render question section
 };
 
