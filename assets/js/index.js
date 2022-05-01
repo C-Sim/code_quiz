@@ -1,13 +1,11 @@
 // global declarations
 const questions = [
   {
-    questionNumber: 1,
     question: "Which of these is not used to declare a variable in JavaScript?",
     answers: ["Const", "Let", "Var", "Dec"],
     correctAnswer: "Dec",
   },
   {
-    questionNumber: 2,
     question: "What is the name for the symbols ( ) ?",
     answers: [
       "Curly Brackets",
@@ -18,20 +16,17 @@ const questions = [
     correctAnswer: "Parentheses",
   },
   {
-    questionNumber: 3,
     question:
       "What attribute should be used to link a JavaScript file to an HTML file?",
     answers: ["src", "href", "link", "rel"],
     correctAnswer: "src",
   },
   {
-    questionNumber: 4,
     question: "What symbol is used to reference an ID in CSS?",
     answers: [".", "#", "/", "="],
     correctAnswer: "#",
   },
   {
-    questionNumber: 5,
     question: "Which of these is not a type of loop statement in JavaScript?",
     answers: ["For", "While", "Rotate", "Continue"],
     correctAnswer: "Rotate",
@@ -87,8 +82,8 @@ const startTimer = () => {
   };
 
   // setInterval of 1000ms (1s)
-  setInterval(countdown, 1000);
-  return;
+  //   setInterval(countdown, 1000);
+  //   return;
 };
 
 const validateAnswer = () => {
@@ -103,7 +98,8 @@ const validateAnswer = () => {
   // if question is not last question then increment question index and render next question
 };
 
-const handleFormSubmit = () => {
+const handleFormSubmit = (event) => {
+  event.preventDefault();
   // get value from input
   // check if empty then render error alert with message and status
   // if not empty then create the score object
@@ -139,7 +135,29 @@ const renderTimerSection = () => {
 
 const renderQuestionSection = () => {
   // use DOM tree as guide to build in JS
+
+  const questionSection = document.createElement("section");
+  questionSection.setAttribute("class", "content");
+  questionSection.setAttribute("id", "question-section");
+
+  const questionContent = document.createElement("h2");
+
+  questionContent.textContent = questions[questionIndex].question;
+
+  const options = document.createElement("ul");
+  options.setAttribute("id", "options");
+
+  for (let i = 0; i < questions[questionIndex].answers.length; i += 1) {
+    const answer = document.createElement("li");
+    answer.textContent = questions[questionIndex].answers[i];
+
+    options.appendChild(answer);
+  }
+
+  questionSection.append(questionContent, options);
+
   // append section to main
+  mainContent.append(questionSection);
   // add click event listener on #question-section
 };
 
@@ -150,7 +168,17 @@ const renderGameOver = () => {
 
 const renderAlert = (message, status) => {
   // use DOM tree as guide to build in JS
+  const confirmResult = document.createElement("div");
+  confirmResult.setAttribute("class", "confirm-result");
+  if ((validateAnswer = "correct")) {
+    confirmResult.setAttribute("id", "correct");
+    confirmResult.textContent = "Correct...well done!";
+  } else {
+    confirmResult.setAttribute("id", "incorrect");
+    confirmResult.textContent = "Incorrect...more study needed.";
+  }
   // append div to #question-section
+  questionSection.append(confirmResult);
 };
 
 const renderForm = () => {
@@ -167,13 +195,13 @@ const renderQuizCompleteSection = () => {
 const startQuiz = () => {
   // remove start section
   const removeStart = document.getElementById("start-content");
-
   removeStart.remove();
   // start timer
   startTimer();
   // render timer section
   renderTimerSection();
   // render question section
+  renderQuestionSection();
 };
 
 // start button click event listener

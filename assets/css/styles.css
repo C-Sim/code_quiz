@@ -70,7 +70,7 @@ body {
   font-size: 2rem;
   background-color: var(--deep-space-sparkle);
   padding: 8px;
-  margin: 0rem 4rem;
+  margin: 2rem 4rem;
 }
 
 .span {
@@ -119,6 +119,14 @@ body {
 
 #options li:hover {
   background-color: var(--orange-red-crayola);
+}
+
+#correct {
+  color: limegreen;
+}
+
+#incorrect {
+  color: red;
 }
 
 #name-input {
