@@ -1,6 +1,6 @@
 # code_quiz
 
-Quiz built using JavaScript, Web APIs........
+Quiz built using JavaScript, Web APIs and CSS to render question pages from object content using a loop, render alert to feedback whether correct answer was selected and display high scores from local storage.
 
 [Deployed GitHub URL](...)
 
@@ -13,43 +13,61 @@ Quiz built using JavaScript, Web APIs........
   - Flexbox
   - Variables
 - JavaScript
+  - Objects
+  - Arrays
+  - Intervals
+  - Timeout
+  - Event Listeners
+  - Template Strings
+  - Event Bubbling
+  - Loops
+  - Conditional Statements
 - Web APIs
+  - Document Object Model
+  - Local Storage
 - GitHub Pages
 
 ## Screenshots
 
 <details>
+<summary>DOM tree</summary>
+
+![dom-tree](assets/screenshots/dom_tree.png)
+
+</details>
+
+<details>
 <summary>Start page</summary>
 
-![start-page](...)
+![start-page](assets/screenshots/start_page.png)
 
 </details>
 
 <details>
 <summary>Question page desktop viewport</summary>
 
-![question-page-desktop](...)
+![question-page-desktop](assets/screenshots/question_desktop.png)
 
 </details>
 
 <details>
 <summary>Question page mobile viewport</summary>
 
-![question-page-mobile](...)
+![question-page-mobile](assets/screenshots/question_mobile.png)
 
 </details>
 
 <details>
 <summary>Record score page</summary>
 
-![record-score-page](...)
+![record-score-page](assets/screenshots/record_score.png)
 
 </details>
 
 <details>
 <summary>High scores page</summary>
 
-![highscores-page](...)
+![highscores-page](assets/screenshots/high_scores.png)
 
 </details>
 </br>
