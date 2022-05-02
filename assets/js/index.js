@@ -47,39 +47,24 @@ const removeStart = document.getElementById("start-content");
 
 const mainContent = document.getElementById("main-content");
 
-const readFromLocalStorage = (key, defaultValue) => {
-  // get from LS by key
-  const dataLS = localStorage.getItem(key);
-  // parse LS data
-  const parsedData = JSON.parse(dataLS);
-  // CHECK
-  // check if highscores exist in LS
-
-  if (parsedData) {
-    return parsedData;
-    // CHECK
-    // if false then set highscores to empty array in LS
-  } else {
-    return defaultValue;
+// initialise local storage
+const onLoad = () => {
+  // check if highscores exists in LS
+  const highScores = readFromLocalStorage();
+  // if false then set highscores to empty array in LS
+  if (!highScores) {
+    localStorage.setItem("highscores", JSON.stringify([]));
   }
 };
 
-// const writeToLocalStorage = (key, value) => {
-//   // stringify object value
-//   const stringifiedValue = JSON.stringify(value);
-//   //   set value for each key within LS
-//   localStorage.setItem(key, stringifiedValue);
-
-//   console.log(highScores);
-// };
-
-const onLoad = () => {
-  // initialise local storage
-  highScores;
-  console.log(highScores);
+// getScores from local storage
+const readFromLocalStorage = () => {
+  // get from LS by key
+  const getScores = localStorage.getItem("highscores");
+  // parse LS data
+  const parsedData = JSON.parse(getScores);
+  return parsedData;
 };
-
-const highScores = readFromLocalStorage("High Scores", []);
 
 const startTimer = () => {
   // declare function to execute every 1 sec
@@ -261,7 +246,7 @@ const renderRecordScoreSection = () => {
 
   const input = document.createElement("input");
   input.setAttribute("id", "name-input");
-  input.setAttribute("placeholder", "Enter you name here");
+  input.setAttribute("placeholder", "Enter your name here");
 
   inputContainer.appendChild(input);
 
@@ -278,39 +263,50 @@ const renderRecordScoreSection = () => {
   form.append(score, inputContainer, buttonContainer);
 
   // add submit event handler to form
-  scoreButton.addEventListener("submit", handleFormSubmit);
+  scoreButton.addEventListener("click", handleFormSubmit);
 };
 
 const handleFormSubmit = (event) => {
   event.preventDefault();
   // get value from input
   const nameInput = document.getElementById("name-input").value;
-  console.log(nameInput);
 
   // if not empty then create the score object
   if (nameInput !== "") {
     const player = {
-      name: nameInput,
+      userName: nameInput,
       score: timerValue,
     };
+
+    const highScores = readFromLocalStorage();
+
+    // push score object to LS
+    highScores.push(player);
+
+    // sort scores high to low
+    highScores.sort((a, b) => b.score - a.score);
+
+    writeToLocalStorage("highscores", highScores);
+
+    // render high scores page
+    renderHighScores();
   } else {
     // if empty then render error alert with message and status
     const confirmInput = document.createElement("div");
     confirmInput.setAttribute("class", "confirm-result");
     confirmInput.setAttribute("id", "incorrect");
+    confirmInput.textContent = "Please enter your name.";
 
     const form = document.getElementById("submit-score");
     form.append(confirmInput);
   }
+};
 
-  // push score object to LS
-  const scoreArray = readFromLocalStorage("", []);
-  scoreArray.push(player);
-
-  writeToLocalStorage(key, value);
-
-  // render high scores page
-  renderHighScores();
+const writeToLocalStorage = (key, value) => {
+  // stringify object value
+  const stringifiedValue = JSON.stringify(value);
+  //   set value for each key within LS
+  localStorage.setItem(key, stringifiedValue);
 };
 
 const renderHighScores = () => {
