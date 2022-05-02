@@ -64,6 +64,7 @@ body {
   margin: 0;
 }
 
+/* timer */
 #timer-section,
 #score {
   color: var(--beige);
@@ -78,6 +79,7 @@ body {
   color: var(--orange-red-crayola);
 }
 
+/* content for each page */
 .content {
   color: var(--deep-space-sparkle);
   padding: 0 1rem;
@@ -91,6 +93,7 @@ body {
   font-size: 1.2rem;
 }
 
+/* buttons */
 .button {
   background-color: var(--orange-red-crayola);
   color: var(--cadet-blue);
@@ -111,6 +114,7 @@ body {
   background-color: var(--deep-space-sparkle);
 }
 
+/* answer options for question page */
 #options {
   list-style: none;
   padding: 0;
@@ -121,6 +125,7 @@ body {
   background-color: var(--orange-red-crayola);
 }
 
+/* alerts */
 #correct {
   color: limegreen;
 }
@@ -129,6 +134,7 @@ body {
   color: red;
 }
 
+/* form */
 #name-input {
   margin: 2rem 0 0 0;
   height: 2rem;
@@ -141,6 +147,7 @@ body {
   margin: 0.5rem;
 }
 
+/* score table */
 #all-scores {
   width: 24rem;
   font-size: 1rem;
