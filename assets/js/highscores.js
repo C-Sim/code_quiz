@@ -5,10 +5,8 @@ const highScoresSection = document.getElementById("high-scores-section");
 
 // getScores from local storage
 const readFromLocalStorage = () => {
-  // get from LS by key
-  const getScores = localStorage.getItem("highscores");
-  // parse LS data
-  const parsedData = JSON.parse(getScores);
+  // get from LS by key and parse
+  const parsedData = JSON.parse(localStorage.getItem("highscores"));
   return parsedData;
 };
 

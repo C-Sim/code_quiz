@@ -59,10 +59,8 @@ const onLoad = () => {
 
 // getScores from local storage
 const readFromLocalStorage = () => {
-  // get from LS by key
-  const getScores = localStorage.getItem("highscores");
-  // parse LS data
-  const parsedData = JSON.parse(getScores);
+  // get from LS by key and parse
+  const parsedData = JSON.parse(localStorage.getItem("highscores"));
   return parsedData;
 };
 
@@ -103,7 +101,7 @@ const renderTimerSection = () => {
   timeRemaining.textContent = "Time Remaining: ";
 
   const timerSpan = document.createElement("span");
-  //   TODO - check if better way to set multiple attributes
+
   timerSpan.setAttribute("id", "timer-span");
   timerSpan.setAttribute("class", "span");
   timerSpan.textContent = timerValue;

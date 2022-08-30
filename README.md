@@ -15,8 +15,6 @@ Quiz built using JavaScript, Web APIs and CSS to render question pages from obje
 - JavaScript
   - Objects
   - Arrays
-  - Intervals
-  - Timeout
   - Event Listeners
   - Template Strings
   - Event Bubbling
@@ -25,6 +23,8 @@ Quiz built using JavaScript, Web APIs and CSS to render question pages from obje
 - Web APIs
   - Document Object Model
   - Local Storage
+  - Intervals
+  - Timeout
 - GitHub Pages
 
 ## Screenshots
